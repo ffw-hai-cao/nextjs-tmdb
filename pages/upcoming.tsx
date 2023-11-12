@@ -1,15 +1,15 @@
 import React from 'react';
 import Layout from '../components/Layout';
 
-const HomePage: React.FC = () => {
+const Upcoming: React.FC = () => {
   return (
     <Layout>
       <>
-        <h1>Home page</h1>
+        <h1>Upcoming page</h1>
         <>Main content</>
       </>
     </Layout>
   );
 };
 
-export default HomePage;
+export default Upcoming;
