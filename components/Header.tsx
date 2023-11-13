@@ -4,7 +4,6 @@ import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, MagnifyingGlassIcon, XMarkIcon, UserIcon } from '@heroicons/react/24/outline';
 
 import { useRouter } from 'next/router';
-import Nav from './Nav';
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
