@@ -14,7 +14,7 @@ const Upcoming: React.FC<DataProps> = ({upcomingData}) => {
     <Layout title="Upcoming movies | The movies friend">
       <>
         <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-          <MoviesCollection results={upcomingData} title="Upcoming Movies" endpoint={tmdbEndPoint} />
+          <MoviesCollection results={upcomingData} title="Upcoming Movies" endpoint={tmdbEndPoint} template="ddefault" />
         </div>
       </>
     </Layout>

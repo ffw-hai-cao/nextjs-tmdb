@@ -14,7 +14,7 @@ const Popular: React.FC<DataProps> = ({popularData}) => {
     <Layout title="Popular movies | The movies friend">
       <>
         <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-          <MoviesCollection results={popularData} title="Popular Movies" endpoint={tmdbEndPoint} />
+          <MoviesCollection results={popularData} title="Popular Movies" endpoint={tmdbEndPoint} template="ddefault" />
         </div>
       </>
     </Layout>
