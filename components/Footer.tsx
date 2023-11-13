@@ -1,6 +1,6 @@
 import { faFacebookF, faInstagram, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faCopyright } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Disclosure } from "@headlessui/react";
 import Link from "next/link";
 
@@ -50,10 +50,11 @@ const Footer = () => {
 							</ul>
           </div>
 
-					<div className="copyright mb-4 text-gray-300 text-sm">
+					<div className="copyright mb-4 text-gray-300 text-sm flex flex-row">
 						<FontAwesomeIcon
 							icon={faCopyright}
-							className="text-gray-300"
+							className="far w-3 mr-1.5 text-gray-300"
+              size="xs"
 						/> by FFWVietnam
 					</div>
         </div>
