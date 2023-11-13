@@ -17,6 +17,25 @@ export const fetchTmdbData = async (endpoint: String, page: Number = 1) => {
   }
 };
 
+export const searchTmdbData = async (endpoint: String, page: Number = 1) => {
+  try {
+    const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+    const tmdbUrl = `https://api.themoviedb.org/3${endpoint}&api_key=${apiKey}&language=en-US&page=${page}`;
+
+    const response = await fetch(tmdbUrl);
+    const data = await response.json();
+
+    if (response.ok) {
+      return data;
+    } else {
+      throw new Error(data.message || 'Something went wrong with the API request');
+    }
+  } catch (error) {
+    console.error('Error fetching TMDb data:', error);
+    throw error;
+  }
+};
+
 export const topRatedMovie = async () => {
   try {
     const apiKey = process.env.NEXT_PUBLIC_API_KEY;

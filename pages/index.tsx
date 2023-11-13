@@ -17,7 +17,7 @@ const HomePage: React.FC<DataProps> = ({topRatedMovieData, nowPlayingData}) => {
       <>
         <Banner results={topRatedMovieData} />
         <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-          <MoviesCollection results={nowPlayingData} title="Now Playing Movies" endpoint={tmdbEndPoint} />
+          <MoviesCollection results={nowPlayingData} title="Now Playing Movies" endpoint={tmdbEndPoint} template="default" />
         </div>
       </>
     </Layout>

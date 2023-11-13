@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { fetchTmdbData } from '../pages/api/tmdb';
+import { fetchTmdbData, searchTmdbData } from '../pages/api/tmdb';
 import MovieThumbnail from './MovieThumbnail'
 
-function MoviesCollection({title, results, endpoint}: {title: string, results: any; endpoint: string}) {
+function MoviesCollection({title, results, endpoint, template = 'default'}: {title: string, results: any; endpoint: string, template: String}) {
   const totalPage = results.total_pages;
 
   const [dataLoadmore, setDataLoadmore] = useState<any[]>([]);
@@ -10,8 +10,14 @@ function MoviesCollection({title, results, endpoint}: {title: string, results: a
   const [page, setPage] = useState(2);
 
   const handleLoadMore = async () => {
+    let newData;
     try {
-      const newData = await fetchTmdbData(endpoint, page);
+      if (template == "search") {
+        newData = await searchTmdbData(endpoint, page);
+      } else {
+        newData = await fetchTmdbData(endpoint, page);
+      }
+      console.log(newData);
       if(newData.page < totalPage) {
         setDataLoadmore([...dataLoadmore, ...newData.results]);
         setbtnStage(true);
