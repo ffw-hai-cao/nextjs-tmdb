@@ -1,26 +1,28 @@
 import React, { ReactNode } from 'react';
 import { fetchTmdbData } from './api/tmdb';
 import Layout from '../components/Layout';
+import MoviesCollection from "../components/MoviesCollection";
 
 type DataProps = {
   upcomingData: ReactNode;
 };
 
-const Upcoming: React.FC<DataProps> = ({upcomingData}) => {
-  console.log(upcomingData);
+const tmdbEndPoint = '/movie/upcoming';
 
+const Upcoming: React.FC<DataProps> = ({upcomingData}) => {
   return (
-    <Layout title="Popular movies | The movies friend">
+    <Layout title="Upcoming movies | The movies friend">
       <>
-        <h1>Upcoming page</h1>
-        <>Main content</>
+        <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+          <MoviesCollection results={upcomingData} title="Upcoming Movies" endpoint={tmdbEndPoint} />
+        </div>
       </>
     </Layout>
   );
 };
 
 export async function getServerSideProps() {
-  const upcomingData = await fetchTmdbData('/movie/upcoming');
+  const upcomingData = await fetchTmdbData(tmdbEndPoint);
 
   return {
     props: {
