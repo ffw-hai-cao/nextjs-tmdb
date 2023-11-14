@@ -83,3 +83,40 @@ export const topRatedMovie = async () => {
     throw error;
   }
 };
+
+export const loginData = async (username: String, password: String) => {
+  try {
+    const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+    const requestTokenUrl = `https://api.themoviedb.org/3/authentication/token/new?api_key=${apiKey}`;
+
+    const requestTokenRes = await fetch(requestTokenUrl);
+    const requestToken = await requestTokenRes.json();
+
+    if (requestToken.success) {
+      const validateLoginUrl = `https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=${apiKey}&request_token=${requestToken.request_token}&username=${username}&password=${password}`;
+
+      const validateLoginRes = await fetch(validateLoginUrl);
+      const validateLogin = await validateLoginRes.json();
+
+      if (validateLogin.success) {
+        const sessionUidUrl = `https://api.themoviedb.org/3/authentication/session/new?api_key=${apiKey}&request_token=${requestToken.request_token}`;
+
+        const sessionUidRes = await fetch(sessionUidUrl);
+        const sessionUid = await sessionUidRes.json();
+
+        if (sessionUid.success) {
+          return sessionUid;
+        } else {
+          throw new Error(sessionUid.message || 'Something went wrong with the API request');
+        }
+      } else {{
+        throw new Error(validateLogin.message || 'Something went wrong with the API request');
+      }}
+    } else {
+      throw new Error(requestToken.message || 'Something went wrong with the API request');
+    }
+  } catch (error) {
+    console.error('Error fetching TMDb data:', error);
+    throw error;
+  }
+};

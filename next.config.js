@@ -2,7 +2,15 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["image.tmdb.org"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.tmdb.org',
+      },
+    ],
+  },
+  publicRuntimeConfig: {
+    staticFolder: '/static',
   },
 }
 
