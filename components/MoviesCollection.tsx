@@ -17,8 +17,8 @@ function MoviesCollection({title, results, endpoint, template = 'default'}: {tit
       } else {
         newData = await fetchTmdbData(endpoint, page);
       }
-      console.log(newData);
-      if(newData.page < totalPage) {
+
+      if(newData.results && newData.page < totalPage) {
         setDataLoadmore([...dataLoadmore, ...newData.results]);
         setbtnStage(true);
       } else {
@@ -58,7 +58,7 @@ function MoviesCollection({title, results, endpoint, template = 'default'}: {tit
               className='bg-white hover:bg-gray-300 text-black font-bold py-3 px-4 rounded'
               disabled
             >
-                Load More {page - 1}/{totalPage}
+                No Movies
             </button>
           )}
         </div>

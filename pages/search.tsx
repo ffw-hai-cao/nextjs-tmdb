@@ -33,7 +33,11 @@ const Search: React.FC = () => {
           { searchTerm && searchMovies.length !== 0 ? (
             <MoviesCollection results={searchMovies} title={`Search for: ${searchTerm}`} endpoint={`/search/movie?query=${searchTerm}`} template="search" />
           ) : (
-            <></>
+            <>
+              <div className='text-2xl'>
+                No Movies
+              </div>
+            </>
           )}
         </div>
       </>

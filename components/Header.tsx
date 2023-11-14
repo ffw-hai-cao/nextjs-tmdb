@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { hasCookie } from 'cookies-next';
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, MagnifyingGlassIcon, XMarkIcon, UserIcon } from '@heroicons/react/24/outline';
 
@@ -86,7 +87,7 @@ const Header = () => {
                       <MagnifyingGlassIcon className="h-6 w-6" />
                     </span>
                     
-                    <span className="cursor-pointer ml-3 text-sm text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2" onClick={() => router.push('/login')}>
+                    <span className="cursor-pointer ml-3 text-sm text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2" onClick={() => router.push(hasCookie('userToken') ? '/user' : '/login')}>
                       <UserIcon className="h-6 w-6 rounded-full" />
                     </span>
                   </div>

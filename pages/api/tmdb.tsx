@@ -120,3 +120,22 @@ export const loginData = async (username: String, password: String) => {
     throw error;
   }
 };
+
+export const userDetail = async (sessionId: String) => {
+  try {
+    const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+    const sessionIdUrl = `https://api.themoviedb.org/3/account/${sessionId}?api_key=${apiKey}`;
+
+    const sessionIdRes = await fetch(sessionIdUrl);
+    const sessionIdData = await sessionIdRes.json();
+
+    if (sessionIdRes.ok) {
+      return sessionIdData;
+    } else {
+      throw new Error(sessionIdData.message || 'Something went wrong with the API request');
+    }
+  } catch (error) {
+    console.error('Error fetching TMDb data:', error);
+    throw error;
+  }
+}

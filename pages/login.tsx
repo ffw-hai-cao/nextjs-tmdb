@@ -1,3 +1,4 @@
+import React from 'react';
 import Image from "next/image";
 import { useState } from 'react';
 import { loginData } from './api/tmdb';
@@ -15,13 +16,12 @@ const Login: React.FC = () => {
   const handleLogin = async () => {
     try {
       const loginRes = await loginData(username, password);
-      console.log(loginRes);
       
       if (loginRes.success) {
         const userId = loginRes.session_id;
         let expires = new Date();
         expires.setDate(expires.getDate() + 1);
-        setCookie('token', userId, {expires: expires})
+        setCookie('userToken', userId, {expires: expires})
         router.push('/')
       }
     } catch (error) {
