@@ -40,6 +40,7 @@ function Banner({results}: {results: any}) {
   return (
     <div className="relative h-screen mb-7 bg-gradient-from-bl bg-gradient-to-tr from-black">
       <YouTube
+        data-testid="banner-iframe"
         videoId={results.videos?.results[index]?.key}
         opts={opts}
         style={{ position: "absolute", top: "0", left: "0", bottom: "0", right: "0"}}
@@ -52,7 +53,9 @@ function Banner({results}: {results: any}) {
             : 'visible'
         )}
       />
-      <Image src={`${BASE_URL}${results.backdrop_path || results.poster_path}`}
+      <Image
+        data-testid="banner-image"
+        src={`${BASE_URL}${results.backdrop_path || results.poster_path}`}
         width={330}
         height={210}
         priority={true}
@@ -65,9 +68,10 @@ function Banner({results}: {results: any}) {
         )}
       />
       <div className='absolute mx-auto max-w-screen-md px-4 sm:px-6 lg:px-8 text-white top-1/2 transform -translate-y-1/2'>
-        <h2 className='text-9xl font-bold mb-4'>{results.original_title}</h2>
-        <div className='text-lg mb-7'>{results.overview}</div>
+        <h2 className='text-9xl font-bold mb-4' data-testid="banner-title">{results.original_title}</h2>
+        <div className='text-lg mb-7' data-testid="banner-overview">{results.overview}</div>
         <button className="flex bg-white hover:bg-gray-300 text-black font-bold py-3 px-4 rounded"
+          data-testid="banner-cta"
           onClick={() => router.push(`/movie/${results.id}`)}
         >
           <PlayIcon className='h-6 mr-2' /> Watch Movie
