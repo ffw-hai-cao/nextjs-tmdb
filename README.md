@@ -23,4 +23,17 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Login with your accoount from TMDB to watch thhe movies.
+### Login:
+
+- Path: http://localhost:3000/login
+- Due to limit of TMDB API, user have to login via https://www.themoviedb.org/login.
+
+### Home:
+
+- Path: http://localhost:3000/
+- This page shows the Top rate of Movie and Now playing movies
+
+### Search:
+
+- Path: http://locahost:3000/search
+- This page implements searching movie names and filtering by genre.
