@@ -24,6 +24,7 @@ const Search: React.FC = () => {
       <>
         <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
           <input
+            data-testid="search-input"
             type="text"
             placeholder="Search Movies"
             className='bg-transparent p-7 w-full text-center text-2xl mb-14'
