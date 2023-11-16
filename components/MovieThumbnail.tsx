@@ -1,9 +1,9 @@
-import React from 'react'
-import Image from 'next/image'
+import React from 'react';
+import Image from 'next/image';
 import { useRouter } from "next/router";
+import { BASE_URL } from '../constants';
 
 function MovieThumbnail({ result }: { result: any }) {
-    const BASE_URL = "https://image.tmdb.org/t/p/original/";
     const router = useRouter();
 
     function truncate(str: string, no_words: number) {

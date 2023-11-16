@@ -1,6 +1,6 @@
 import React from 'react';
 import { movieDetailData } from '../api/tmdb';
-import Layout from '../../components/Layout';
+import Head from "next/head";
 import YouTube, { YouTubeProps } from 'react-youtube';
 import { hasCookie } from 'cookies-next';
 import { useState, useEffect } from 'react';
@@ -39,7 +39,10 @@ const Movie: React.FC<DataProps> = ({result}) => {
   }; 
 
   return (
-    <Layout title={`${result.original_title} | The movies friend`}>
+    <>
+      <Head>
+        <title>{`${result.original_title} | The movies friend`}</title>
+      </Head>
       {isLoggedIn ? (
         <main className="main-wrap">
           <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
@@ -95,7 +98,7 @@ const Movie: React.FC<DataProps> = ({result}) => {
           </div>
         </main>
       )}
-    </Layout>
+    </>
   );
 }
 

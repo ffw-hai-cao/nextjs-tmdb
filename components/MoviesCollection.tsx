@@ -24,12 +24,11 @@ function MoviesCollection({title, results, endpoint, template = 'default'}: {tit
       } else {
         setbtnStage(false);
       }
-      
+
+      setPage(page + 1);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
-
-    setPage(page + 1);
   };
 
   return (
