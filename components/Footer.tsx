@@ -30,6 +30,7 @@ const Footer = () => {
                 <Link href={item.url}>
                   <FontAwesomeIcon
                     icon={item.icon}
+                    className="w-10 h-10"
                     style={{ fontSize: 24, color: "#fff" }}
                   />
                 </Link>

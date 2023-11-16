@@ -6,8 +6,8 @@ First, clone the project to yyour local:
 git clone git@github.com:ffw-hai-cao/nextjs-tmdb.git
 ```
 
-Seccond, copy file `env.example` and rename to `env.local`
-Chhange `your_api_key` and `your_access_token` get from your [[TMDB account]](https://www.themoviedb.org/settings/api)
+Seccond, copy file `env.example` and rename to `.env.local`
+Change `your_api_key` and `your_access_token` get from your [[TMDB account]](https://www.themoviedb.org/settings/api)
 
 After that, run the development server:
 

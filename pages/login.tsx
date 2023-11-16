@@ -2,7 +2,7 @@ import React from 'react';
 import Image from "next/image";
 import { useState } from 'react';
 import { loginData } from './api/tmdb';
-import Layout from '../components/Layout';
+import Head from "next/head";
 import { PowerIcon } from '@heroicons/react/24/outline';
 import { setCookie } from 'cookies-next'
 import { useRouter } from 'next/router';
@@ -13,6 +13,7 @@ const Login: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMess] = useState('');
+  const [messstage, setMessstage] = useState(false);
 
   const handleLogin = async () => {
     try {
@@ -22,20 +23,25 @@ const Login: React.FC = () => {
         let expires = new Date();
         expires.setDate(expires.getDate() + 1);
         setCookie('userToken', userId, {expires: expires});
-        setMess(`<span class="text-green-400">Welcome <b>${username}</b></span>`);
+        setMess(`Welcome ${username}`);
+        setMessstage(true);
         
         setTimeout(() => {
           router.push('/');
         }, 3000);
       }
     } catch (error) {
-      setMess('<span class="text-red-600">Invalid <b class="text-green-400">username</b> or <b class="text-green-400">password</b></span>');
+      setMess('Invalid username or password');
+      setMessstage(false);
       console.error('Error fetching data:', error);
     }
   };
 
   return (
-    <Layout title="Login | The movie friend">
+    <>
+      <Head>
+        <title>Login | The movie friend</title>
+      </Head>
       <div className="mx-auto max-w-screen-md h-96 grid content-center px-4 sm:px-6 lg:px-8">
         <Image 
           data-testid="login-logo"
@@ -67,9 +73,13 @@ const Login: React.FC = () => {
           onClick={handleLogin}>
           <PowerIcon className='h-6 mr-2' /> Login
         </button>
-        <div className='mt-5 text-base' data-testid="login-message" dangerouslySetInnerHTML={{__html: message}}></div>
+        {messstage ? (
+          <div className='mt-5 text-base text-green-400' data-testid="login-message">{message}</div>
+        ) : (
+          <div className='mt-5 text-base text-red-600' data-testid="login-message">{message}</div>
+        )}
       </div>
-    </Layout>
+    </>
   )
 }
 
