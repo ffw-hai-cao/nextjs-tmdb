@@ -10,6 +10,12 @@ export default function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!login|api|_next/static|_next/image|favicon.ico).*)',
+    '/',
+    '/api/tmdb',
+    '/movie/:path*',
+    '/search/:path*',
+    '/upcoming',
+    '/popular',
+    '/404',
   ],
 }
