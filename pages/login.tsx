@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState } from 'react';
 import { loginData } from './api/tmdb';
 import Head from "next/head";
-import { PowerIcon } from '@heroicons/react/24/outline';
+import { PowerIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
 import { setCookie } from 'cookies-next'
 import { useRouter } from 'next/router';
 
@@ -13,9 +13,13 @@ const Login: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMess] = useState('');
+  const [loading, setLoading] = useState(false);
   const [messstage, setMessstage] = useState(false);
 
   const handleLogin = async () => {
+    setLoading(true);
+    setMess('');
+
     try {
       const loginRes = await loginData(username, password);
       if (loginRes) {
@@ -23,7 +27,7 @@ const Login: React.FC = () => {
         let expires = new Date();
         expires.setDate(expires.getDate() + 1);
         setCookie('userToken', userId, {expires: expires});
-        setMess(`Welcome ${username}`);
+        setMess(`Login successful! Welcome ${username}`);
         setMessstage(true);
         
         setTimeout(() => {
@@ -34,6 +38,8 @@ const Login: React.FC = () => {
       setMess('Invalid username or password');
       setMessstage(false);
       console.error('Error fetching data:', error);
+    } finally {
+      setLoading(false); // Kết thúc loading
     }
   };
 
@@ -69,9 +75,12 @@ const Login: React.FC = () => {
           className='form-input w-full mb-5 p-3 text-black'
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="flex bg-white hover:bg-gray-300 text-black font-bold py-3 px-4 rounded"
+        <button className="flex justify-between bg-white hover:bg-gray-300 text-black font-bold py-3 px-4 rounded"
           onClick={handleLogin}>
-          <PowerIcon className='h-6 mr-2' /> Login
+          <span className="flex">
+            <PowerIcon className='h-6 mr-2' /> Login
+          </span>
+          {loading ? <ArrowPathIcon className='h-6 mr-2 animate-spin' /> : null}
         </button>
         {messstage ? (
           <div className='mt-5 text-base text-green-400' data-testid="login-message">{message}</div>

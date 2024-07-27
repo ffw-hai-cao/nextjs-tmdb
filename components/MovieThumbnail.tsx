@@ -11,7 +11,7 @@ function MovieThumbnail({ result }: { result: any }) {
     }
 
     return (
-      <div className="bg-black rounded-lg overflow-hidden cursor-pointer hover:z-10 hover:shadow-4xl transform hover:scale-125 transition duration-300"
+      <div className="bg-black rounded-lg overflow-hidden cursor-pointer hover:z-10 hover:shadow-2xl transform hover:scale-125 transition duration-300"
         onClick={() => router.push(`/movie/${result.id}`)}>
 
         <Image src={`${BASE_URL}${result.backdrop_path || result.poster_path}`}
