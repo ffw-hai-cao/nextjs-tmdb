@@ -27,6 +27,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 - Path: http://localhost:3000/login
 - Due to limit of TMDB API, user have to login via https://www.themoviedb.org/login.
+- Username / Password: hai.cao / Caohai@1234.
 
 ### Home:
 
