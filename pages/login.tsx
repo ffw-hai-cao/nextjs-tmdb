@@ -27,7 +27,7 @@ const Login: React.FC = () => {
         let expires = new Date();
         expires.setDate(expires.getDate() + 1);
         setCookie('userToken', userId, {expires: expires});
-        setMess(`Login successful! Welcome ${username}`);
+        setMess(`Login successful! Welcome ${username}. Redirecting to home page...`);
         setMessstage(true);
         
         setTimeout(() => {
@@ -39,7 +39,7 @@ const Login: React.FC = () => {
       setMessstage(false);
       console.error('Error fetching data:', error);
     } finally {
-      setLoading(false); // Kết thúc loading
+      setLoading(false);
     }
   };
 

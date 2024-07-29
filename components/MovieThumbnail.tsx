@@ -21,7 +21,7 @@ function MovieThumbnail({ result }: { result: any }) {
           priority={true}
           alt='poster' />
         <div className='movie-detail p-4'>
-          <h3 className='mb-4 text-lg'>{result.original_title}</h3>
+          <h3 className='mb-4 text-xl font-bold'>{result.original_title}</h3>
           <div className='text-sm'>{truncate(result.overview, 12)}</div>
         </div>
       </div>
