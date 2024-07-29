@@ -11,7 +11,7 @@ function MovieThumbnail({ result }: { result: any }) {
     }
 
     return (
-      <div className="bg-black rounded-lg overflow-hidden cursor-pointer hover:z-10 hover:shadow-4xl transform hover:scale-125 transition duration-300"
+      <div className="bg-black rounded-lg overflow-hidden cursor-pointer hover:z-10 hover:shadow-2xl transform hover:scale-125 transition duration-300"
         onClick={() => router.push(`/movie/${result.id}`)}>
 
         <Image src={`${BASE_URL}${result.backdrop_path || result.poster_path}`}
@@ -21,7 +21,7 @@ function MovieThumbnail({ result }: { result: any }) {
           priority={true}
           alt='poster' />
         <div className='movie-detail p-4'>
-          <h3 className='mb-4 text-lg'>{result.original_title}</h3>
+          <h3 className='mb-4 text-xl font-bold'>{result.original_title}</h3>
           <div className='text-sm'>{truncate(result.overview, 12)}</div>
         </div>
       </div>
